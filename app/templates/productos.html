@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Productos</h2>
+
+{% if current_user.rol == "admin" %}
+
+<a
+href="/admin/productos/nuevo"
+class="btn btn-danger">
+
+Nuevo Producto
+
+</a>
+
+{% elif current_user.rol == "vendedor" %}
+
+<a
+href="/vendedor/productos/nuevo"
+class="btn btn-danger">
+
+Nuevo Producto
+
+</a>
+{% endif %}
+
+<br><br>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>ID</th>
+<th>Nombre</th>
+<th>Precio</th>
+<th>Stock</th>
+<th>Categoría</th>
+<th>Acciones</th>
+
+</tr>
+
+{% for producto in productos %}
+
+<tr>
+
+<td>{{ producto.id }}</td>
+<td>{{ producto.nombre }}</td>
+<td>{{ producto.precio }}</td>
+<td>{{ producto.stock }}</td>
+<td>{{ producto.categoria.nombre }}</td>
+
+<td>
+
+{% if current_user.rol == "admin" %}
+
+<a href="/admin/productos/editar/{{ producto.id }}"
+class="btn btn-danger">
+Editar
+</a>
+
+<a href="/admin/productos/eliminar/{{ producto.id }}"
+class="btn btn-danger">
+Eliminar
+</a>
+
+{% elif current_user.rol == "vendedor" %}
+
+<a href="/vendedor/productos/editar/{{ producto.id }}"
+class="btn btn-danger">
+Editar
+</a>
+
+<a href="/vendedor/productos/eliminar/{{ producto.id }}"
+class="btn btn-danger">
+Eliminar
+</a>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

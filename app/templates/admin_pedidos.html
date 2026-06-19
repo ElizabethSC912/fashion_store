@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h3>Pedidos Recientes</h3>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Usuario</th>
+<th>Total</th>
+<th>Estado</th>
+<th></th>
+</tr>
+
+{% for pedido in pedidos %}
+
+{% if pedido.estado != "vendido" %}
+
+<tr>
+
+<td>{{ pedido.id }}</td>
+<td>{{ pedido.usuario_id }}</td>
+<td>Bs {{ pedido.total }}</td>
+<td>{{ pedido.estado }}</td>
+
+<td>
+
+{% if current_user.rol == "admin" %}
+
+<a
+href="/admin/vender/{{ pedido.id }}"
+class="btn btn-danger">
+
+Marcar vendido
+
+</a>
+
+{% elif current_user.rol == "vendedor" %}
+
+<a
+href="/vendedor/vender/{{ pedido.id }}"
+class="btn btn-danger">
+
+Marcar vendido
+
+</a>
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endif %}
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="col-md-6">
+
+<h3>Ventas Realizadas</h3>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Usuario</th>
+<th>Total</th>
+<th>Estado</th>
+</tr>
+
+{% for pedido in pedidos %}
+
+{% if pedido.estado == "vendido" %}
+
+<tr>
+
+<td>{{ pedido.id }}</td>
+<td>{{ pedido.usuario_id }}</td>
+<td>Bs {{ pedido.total }}</td>
+
+<td>
+
+<span class="badge bg-danger">
+
+VENDIDO
+
+</span>
+
+</td>
+
+</tr>
+
+{% endif %}
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

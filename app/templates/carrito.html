@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Mi Carrito</h2>
+
+<table class="table">
+
+<tr>
+
+<th>Producto</th>
+<th>Precio</th>
+<th>Cantidad</th>
+<th>Subtotal</th>
+<th>Acciones</th>
+
+</tr>
+
+{% for item in items %}
+
+<tr>
+
+<td>
+{{ item.producto.nombre }}
+</td>
+
+<td>Bs {{ item.producto.precio }}</td>
+
+<td>
+{{ item.cantidad }}
+</td>
+
+<td>
+Bs {{ item.producto.precio * item.cantidad }}
+</td>
+
+</tr>
+<td>
+
+<a
+href="/restar-carrito/{{ item.id }}"
+class="btn btn-warning">
+
+-
+
+</a>
+
+<a
+href="/sumar-carrito/{{ item.id }}"
+class="btn btn-success">
+
++
+
+</a>
+
+</td>
+
+{% endfor %}
+
+</table>
+
+<a
+href="/confirmar-compra"
+class="btn btn-success">
+
+Confirmar Compra
+
+</a>
+
+{% endblock %}

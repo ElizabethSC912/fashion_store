@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4">
+
+Panel Administrativo
+
+</h1>
+
+<div class="row">
+
+<div class="col-md-3">
+
+<div class="card shadow-lg text-center">
+
+<div class="card-body">
+
+<div class="admin-card">
+
+<h4 class="admin-title">
+Usuarios
+</h4>
+
+<h1>
+{{ total_usuarios }}
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card shadow-lg text-center">
+
+<div class="card-body">
+
+<div class="admin-card">
+
+<h5 class="admin-title">
+Productos
+</h5>
+
+<h1>
+{{ total_productos}}
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card shadow-lg text-center">
+
+<div class="card-body">
+
+<div class="admin-card">
+
+<h5 class="admin-title">
+Pedidos
+</h5>
+
+<h1>
+{{ total_pedidos}}
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card shadow-lg text-center">
+
+<div class="card-body">
+
+<div class="admin-card">
+
+<h5 class="admin-title">
+Ventas
+Totales
+</h5>
+
+<h1>
+{{ total_ventas}}
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

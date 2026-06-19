@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Categorías</h2>
+{% if current_user.rol == "admin" %}
+
+<a href="/admin/categorias/nueva"
+class="btn btn-danger mb-3">
+
+Nueva Categoría
+
+</a>
+
+{% elif current_user.rol == "vendedor" %}
+
+<a href="/vendedor/categorias/nueva"
+class="btn btn-danger mb-3">
+
+Nueva Categoría
+
+</a>
+{% endif %}
+
+
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Acciones</th>
+</tr>
+
+{% for categoria in categorias %}
+
+<tr>
+
+<td>{{ categoria.id }}</td>
+
+<td>{{ categoria.nombre }}</td>
+
+<td>
+
+{% if current_user.rol == "admin" %}
+
+<a href="/admin/categorias/editar/{{ categoria.id }}"
+class="btn btn-danger">
+Editar
+</a>
+
+<a href="/admin/categorias/eliminar/{{ categoria.id }}"
+class="btn btn-danger">
+Eliminar
+</a>
+
+{% elif current_user.rol == "vendedor" %}
+
+<a href="/vendedor/categorias/editar/{{ categoria.id }}"
+class="btn btn-danger">
+Editar
+</a>
+
+<a href="/vendedor/categorias/eliminar/{{ categoria.id }}"
+class="btn btn-danger">
+Eliminar
+</a>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

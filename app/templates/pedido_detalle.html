@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Detalle Pedido #{{ pedido.id }}</h2>
+
+<table class="table">
+
+<tr>
+
+<th>Producto</th>
+<th>Cantidad</th>
+<th>Precio</th>
+<th>Subtotal</th>
+
+</tr>
+
+{% for detalle in pedido.detalles %}
+
+<tr>
+
+<td>
+{{ detalle.producto.nombre }}
+</td>
+
+<td>
+{{ detalle.cantidad }}
+</td>
+
+<td>
+Bs {{ detalle.precio }}
+</td>
+
+<td>
+Bs {{ detalle.precio * detalle.cantidad }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h3>
+Total: Bs {{ pedido.total }}
+</h3>
+
+{% endblock %}

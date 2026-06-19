@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Usuarios</h2>
+
+<table class="table">
+
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Correo</th>
+<th>Rol</th>
+<th></th>
+</tr>
+
+{% for u in usuarios %}
+
+<tr>
+
+<td>{{ u.id }}</td>
+<td>{{ u.nombre }}</td>
+<td>{{ u.correo }}</td>
+<td>{{ u.rol }}</td>
+
+<td>
+
+<a
+href="/admin/eliminar-usuario/{{ u.id }}"
+class="btn btn-danger">
+
+Eliminar
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
