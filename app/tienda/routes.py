@@ -130,7 +130,7 @@ def pedidos():
     )
     
 @tienda_bp.route(
-    "/pedidos/<int:id>"
+    "/pedidoss/<int:id>"
 )
 @login_required
 def detalle_pedido(id):
